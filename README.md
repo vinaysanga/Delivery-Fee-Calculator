@@ -98,6 +98,3 @@ OK
 ## Notes:
 - The API includes input data validation. If any field is missing or contains an incorrect value (e.g., 0, negative, or a float instead of an int), you will receive a `ValidationError`.
 - The rush hour fees are rounded to nearest integer.
-
-## Author:
-Vinay Sanga (vinayfy@gmail.com)
