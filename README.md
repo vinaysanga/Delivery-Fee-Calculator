@@ -1,5 +1,5 @@
 # Python API for Backend
-The backend assignment using Python. You can run the application either using **Docker** or using **Python**. Please follow the guides below for both the cases.
+Code for [Wolt backend assignment](https://github.com/woltapp/engineering-internship-2024) using Python. You can run the application either using **Docker** or using **Python**. Please follow the guides below for both the cases.
 
 ## Prerequisites
 - **Docker**\
@@ -25,7 +25,7 @@ Please change the port if you get conflicts.
 ```
 docker run -dp 5001:5000 vinay_sanga_backend
 ```
-3. Make **POST** requests to the API endpoint at URL: [http://127.0.0.1:5001/](http://127.0.0.1:5001/)
+3. Make **POST** requests to the API endpoint at URL: [http://127.0.0.1:5001/](http://127.0.0.1:5001/). Please see [example](https://github.com/vinaysanga/Delivery-Fee-Calculator/edit/master/README.md#example) below.
 
 4. After you are done using, please stop the docker container.
 
@@ -41,6 +41,29 @@ flask --app fee_calculator run --host 0.0.0.0 --port 5001
 ```
 
 3. Make **POST** requests to the API endpoint at URL: [http://127.0.0.1:5001/](http://127.0.0.1:5001/)
+
+## Example
+#### JSON for the POST request: 
+```json
+{"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"}
+```
+#### Field details
+
+| Field             | Type  | Description                                                               | Example value                             |
+|:---               |:---   |:---                                                                       |:---                                       |
+|cart_value         |Integer|Value of the shopping cart __in cents__.                                   |__790__ (790 cents = 7.90€)                |
+|delivery_distance  |Integer|The distance between the store and customer’s location __in meters__.      |__2235__ (2235 meters = 2.235 km)          |
+|number_of_items    |Integer|The __number of items__ in the customer's shopping cart.                   |__4__ (customer has 4 items in the cart)   |
+|time               |String |Order time in UTC in [ISO format](https://en.wikipedia.org/wiki/ISO_8601). |__2024-01-15T13:00:00Z__                   |
+#### Response:
+```json
+{"delivery_fee": 710}
+```
+#### Field details
+
+| Field         | Type  | Description                           | Example value             |
+|:---           |:---   |:---                                   |:---                       |
+|delivery_fee   |Integer|Calculated delivery fee __in cents__.  |__710__ (710 cents = 7.10€)|
 
 ## Testing
 There are two test suites:
